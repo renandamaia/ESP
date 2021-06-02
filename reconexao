@@ -1,0 +1,31 @@
+
+// -------------- reconexão wifi
+void verifica_cnx_wifi()
+{
+  if(WiFi.status() != WL_CONNECTED) // SE PERDEU CNX WIFI
+  {    
+   WiFi.reconnect(); 
+   while (WiFi.status() != WL_CONNECTED)// enquanto nao reconecta
+   {
+     lcd.setCursor(0,0);
+     lcd.print("Reconectando Wifi   "); 
+     delay(1000);        
+   }
+  }
+}    
+ 
+
+// -------------- reconexão bd
+void verifica_cnx_bd()
+{  
+  if (conn.connected()) {
+    // do something
+  } else {
+    conn.close();
+    lcd.setCursor(0,0);
+    lcd.print("Reconectando Banco  "); 
+    if (conn.connect(server_addr, 3306, user, password_db)) {
+      delay(500);
+    }
+  }
+}
