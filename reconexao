@@ -2,10 +2,10 @@
 // -------------- reconexão wifi
 void verifica_cnx_wifi()
 {
-  if(WiFi.status() != WL_CONNECTED) // SE PERDEU CNX WIFI
+  if(WiFi.status() != WL_CONNECTED) // se perdeu conexão com wifi...
   {    
    WiFi.reconnect(); 
-   while (WiFi.status() != WL_CONNECTED)// enquanto nao reconecta
+   while (WiFi.status() != WL_CONNECTED) // enquanto não reconecta..
    {
      lcd.setCursor(0,0);
      lcd.print("Reconectando Wifi   "); 
@@ -18,13 +18,15 @@ void verifica_cnx_wifi()
 // -------------- reconexão bd
 void verifica_cnx_bd()
 {  
-  if (conn.connected()) {
-    // do something
+  if (conn.connected()) 
+  {
+    // faz alguma coisa
   } else {
     conn.close();
     lcd.setCursor(0,0);
     lcd.print("Reconectando Banco  "); 
-    if (conn.connect(server_addr, 3306, user, password_db)) {
+    if (conn.connect(server_addr, 3306, user, password_db))
+    {
       delay(500);
     }
   }
